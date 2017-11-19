@@ -9,3 +9,9 @@ Banco:
     ✔ add service @done (17-11-19 14:13)
     ✔ dbinitializer @done (17-11-19 14:16)
     ✔ migration @done (17-11-19 14:19)
+
+CRUD:
+  Create:
+  Update:
+  Read:
+  Delete:
