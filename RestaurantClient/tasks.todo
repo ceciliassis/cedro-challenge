@@ -1,2 +1,14 @@
 Service:
   ☐ lida com informaçoes repassadas pela API
+Geral:
+  ☐ fazer uma interface pra Restaurante
+  ☐ fazr uma interface pra Prato
+Paginas:
+  ☐ inicial
+  ☐ cadastro prato
+  ☐ cadastro restaurante
+  ☐ visualizar restaurante
+  ☐ visulizar pratos (consulta prato)
+  ☐ consultar restaurante
+Pesquisas:
+  ☐ utilizar o queryparameters pra fazer a pesquisa?

@@ -8,3 +8,13 @@
 /home/ceciliaassis/Documents/Cursos/dotNET/CEDRO/RestaurantApi/obj/Debug/netcoreapp2.0/RestaurantApi.AssemblyInfo.cs
 /home/ceciliaassis/Documents/Cursos/dotNET/CEDRO/RestaurantApi/obj/Debug/netcoreapp2.0/RestaurantApi.dll
 /home/ceciliaassis/Documents/Cursos/dotNET/CEDRO/RestaurantApi/obj/Debug/netcoreapp2.0/RestaurantApi.pdb
+/home/ceciliaassis/Documents/Cursos/dotNET/cedro-challenge/RestaurantApi/bin/Debug/netcoreapp2.0/RestaurantApi.deps.json
+/home/ceciliaassis/Documents/Cursos/dotNET/cedro-challenge/RestaurantApi/bin/Debug/netcoreapp2.0/RestaurantApi.runtimeconfig.json
+/home/ceciliaassis/Documents/Cursos/dotNET/cedro-challenge/RestaurantApi/bin/Debug/netcoreapp2.0/RestaurantApi.runtimeconfig.dev.json
+/home/ceciliaassis/Documents/Cursos/dotNET/cedro-challenge/RestaurantApi/bin/Debug/netcoreapp2.0/RestaurantApi.dll
+/home/ceciliaassis/Documents/Cursos/dotNET/cedro-challenge/RestaurantApi/bin/Debug/netcoreapp2.0/RestaurantApi.pdb
+/home/ceciliaassis/Documents/Cursos/dotNET/cedro-challenge/RestaurantApi/obj/Debug/netcoreapp2.0/RestaurantApi.csproj.CoreCompileInputs.cache
+/home/ceciliaassis/Documents/Cursos/dotNET/cedro-challenge/RestaurantApi/obj/Debug/netcoreapp2.0/RestaurantApi.AssemblyInfoInputs.cache
+/home/ceciliaassis/Documents/Cursos/dotNET/cedro-challenge/RestaurantApi/obj/Debug/netcoreapp2.0/RestaurantApi.AssemblyInfo.cs
+/home/ceciliaassis/Documents/Cursos/dotNET/cedro-challenge/RestaurantApi/obj/Debug/netcoreapp2.0/RestaurantApi.dll
+/home/ceciliaassis/Documents/Cursos/dotNET/cedro-challenge/RestaurantApi/obj/Debug/netcoreapp2.0/RestaurantApi.pdb
