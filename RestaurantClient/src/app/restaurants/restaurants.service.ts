@@ -26,6 +26,12 @@ export class RestaurantsService {
 
   }
 
+  public deleteRestaurant(id: number) {
+    return this.http.delete(this.API_URL + id)
+                    .map(this.extractData)
+                    .catch(this.errorService.handleError);
+  }
+
   private extractData(res: Response) {
     const data = res.json();
     console.log(data);

@@ -1,3 +1,14 @@
-<p>
-  TODO: Mostrar cada restaurante
-</p>
+<td class="text-center">
+  <button class="btn btn-link text-danger"
+          (click)="delete()">
+    <span class="oi oi-minus"></span>
+  </button>
+</td>
+<td class="text-center">
+  <button class="btn btn-link">
+    <span class="oi oi-pencil"></span>
+  </button>
+</td>
+<td>
+  {{ restaurant.name }}
+</td>
