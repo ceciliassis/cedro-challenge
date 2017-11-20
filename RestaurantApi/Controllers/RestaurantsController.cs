@@ -44,11 +44,35 @@ namespace RestaurantApi.Controllers
             }
         }
 
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody] Restaurant rest) {
+            if(rest == null || rest.RestaurantID != id) {
+                return BadRequest();
+            }
+
+            var restToUpdate = await _context.Restaurants.SingleOrDefaultAsync(
+                r => r.RestaurantID == id
+            );
+
+            restToUpdate.Name = rest.Name;
+
+            try {
+                _context.Restaurants.Update(restToUpdate);
+                await _context.SaveChangesAsync();
+                return Ok();
+            }catch(DbUpdateException /* ex */){
+                Response.StatusCode = (int) HttpStatusCode.InternalServerError;
+                return BadRequest(new { msg = "Something went wrong while deleting, please try again."});
+            }
+        }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id) {
             var restaurant = await _context.Restaurants
                                     .AsNoTracking()
-                                    .SingleOrDefaultAsync(r => r.RestaurantID == id);
+                                    .SingleOrDefaultAsync(
+                                        r => r.RestaurantID == id
+                                    );
             if(restaurant == null){
                 return NotFound();
             }
