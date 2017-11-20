@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { SearchRestaurantComponent } from './restaurants/search-restaurant/search-restaurant.component';
 import { RestaurantComponent } from './restaurants/restaurant/restaurant.component';
+import { DishesComponent } from './dishes/dishes.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +17,15 @@ import { RestaurantComponent } from './restaurants/restaurant/restaurant.compone
     HomeComponent,
     RestaurantsComponent,
     SearchRestaurantComponent,
-    RestaurantComponent
+    RestaurantComponent,
+    DishesComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot([
-      {path: '', component: HomeComponent},
-      {path: 'restaurants', component: RestaurantsComponent}
+      {path: '',            component: HomeComponent},
+      {path: 'restaurants', component: RestaurantsComponent},
+      {path: 'dishes',      component: DishesComponent}
     ])
   ],
   providers: [],
