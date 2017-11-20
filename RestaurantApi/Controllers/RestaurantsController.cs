@@ -20,7 +20,6 @@ namespace RestaurantApi.Controllers
         public RestaurantsController(ManagementContext context){
             _context = context;
         }
-        // TODO: edit restaurante
         
         // GET api/restaurants
         [HttpGet]
@@ -31,7 +30,7 @@ namespace RestaurantApi.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] Restaurant rest) {
             if(rest == null) {
-                return BadRequest(new { msg = "Please Specify a Restaurant Name."});
+                return BadRequest();
             }
 
             try {
@@ -40,10 +39,11 @@ namespace RestaurantApi.Controllers
                 return Ok();
             } catch (DbUpdateException /* ex */) {
                 Response.StatusCode = (int) HttpStatusCode.InternalServerError;
-                return BadRequest(new { msg = "Something went wrong while saving, please try again."});
+                return Json(new { error = "Ocorreu um erro interno, por favor tente novamente."});
             }
         }
 
+        // PATCH api/restaurants/{id}
         [HttpPatch("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] Restaurant rest) {
             if(rest == null || rest.RestaurantID != id) {
@@ -54,6 +54,10 @@ namespace RestaurantApi.Controllers
                 r => r.RestaurantID == id
             );
 
+            if(restToUpdate == null){
+              return NotFound();
+            }
+
             restToUpdate.Name = rest.Name;
 
             try {
@@ -62,10 +66,11 @@ namespace RestaurantApi.Controllers
                 return Ok();
             }catch(DbUpdateException /* ex */){
                 Response.StatusCode = (int) HttpStatusCode.InternalServerError;
-                return BadRequest(new { msg = "Something went wrong while deleting, please try again."});
+                return Json(new { error = "Ocorreu um erro interno, por favor tente novamente." });
             }
         }
 
+        // DELETE api/restaurants/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id) {
             var restaurant = await _context.Restaurants
@@ -82,7 +87,8 @@ namespace RestaurantApi.Controllers
                 await _context.SaveChangesAsync();
                 return Ok();
             } catch (DbUpdateException /* ex */) {
-                return BadRequest(new { msg = "Something went wrong while deleting, please try again."});
+                Response.StatusCode = (int) HttpStatusCode.InternalServerError;
+                return Json(new { error = "Ocorreu um erro interno, por favor tente novamente." });
             }
         }
     }
