@@ -27,6 +27,23 @@ namespace RestaurantApi.Controllers
             return await _context.Restaurants.ToListAsync();
         }
 
+        // GET api/restaurants/search?name=
+        [HttpGet("search")]
+        public async Task<IActionResult> GetRestaurant(string name){
+            if(name == null){
+              return BadRequest();
+            }
+
+            var res = await _context.Restaurants.FirstOrDefaultAsync(r => r.Name == name);
+
+            if(res == null){
+                return NotFound();
+            }
+
+            return Ok(res);
+        }
+
+        // POST api/restaurants
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] Restaurant rest) {
             if(rest == null) {
@@ -50,9 +67,10 @@ namespace RestaurantApi.Controllers
                 return BadRequest();
             }
 
-            var restToUpdate = await _context.Restaurants.SingleOrDefaultAsync(
-                r => r.RestaurantID == id
-            );
+            var restToUpdate = await _context.Restaurants
+                                        .SingleOrDefaultAsync(
+                                            r => r.RestaurantID == id
+                                        );
 
             if(restToUpdate == null){
               return NotFound();
