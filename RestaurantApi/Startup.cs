@@ -25,6 +25,14 @@ namespace RestaurantApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(o =>
+                 o.AddPolicy("AllowAll", builder => {
+                builder.AllowAnyHeader();
+                builder.AllowAnyMethod();
+                builder.WithOrigins("http://localhost");
+                builder.AllowCredentials();
+            }));
+
             services.AddDbContext<ManagementContext>(ops => 
                 ops.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc();
@@ -37,7 +45,7 @@ namespace RestaurantApi
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseCors("AllowAll");
             app.UseMvc();
         }
     }
