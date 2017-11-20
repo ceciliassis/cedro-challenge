@@ -14,12 +14,13 @@ export class ErrorService {
     if (error instanceof Response) {
       const body = error.json() || '';
       const err  = body.error || JSON.stringify(body);
-      errorMsg = `${error.status} - ${error.statusText || ''} ${err}`
+      errorMsg = `${error.status} - ${error.statusText || ''}: ${err}`
     } else {
       errorMsg = error.message ? error.message : error.toString();
     }
 
     console.error(errorMsg);
+    alert(errorMsg);
     return Observable.throw(errorMsg);
   }
 

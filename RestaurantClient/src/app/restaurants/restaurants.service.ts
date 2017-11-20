@@ -29,8 +29,17 @@ export class RestaurantsService {
                     .catch(this.errorService.handleError);
   }
 
+  public editRestaurant(rest: Restaurant) {
+    const body = {
+      restaurantID: rest.restaurantID,
+      name: rest.name
+    };
+    return this.http.patch(this.API_URL + rest.restaurantID, body)
+                    .map(this.extractData)
+                    .catch(this.errorService.handleError);
+  }
+
   public deleteRestaurant(id: number) {
-    // TODO: ver error retornado qando da certo
     return this.http.delete(this.API_URL + id)
                     .map(this.extractData)
                     .catch(this.errorService.handleError);

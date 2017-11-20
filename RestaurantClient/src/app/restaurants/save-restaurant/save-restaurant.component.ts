@@ -38,12 +38,19 @@ export class SaveRestaurantComponent implements OnInit {
   private create() {
     this.resService.createRestaurant(this.restaurant.name)
                    .subscribe(
-                      (data) => this.router.navigate(['/restaurants'])
+                      () => this.redirect()
                     );
   }
 
   private edit() {
-    console.log('TODO');
+    this.resService.editRestaurant(this.restaurant)
+                   .subscribe(
+                      () => this.redirect()
+                   )
+  }
+
+  private redirect() {
+    this.router.navigate(['/restaurants']);
   }
 
 }
