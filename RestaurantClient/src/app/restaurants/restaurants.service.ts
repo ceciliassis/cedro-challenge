@@ -36,7 +36,14 @@ export class RestaurantsService {
   }
 
   private extractData(res: Response) {
-    const data = res.json();
+    let data;
+    if (res.ok) {
+      try {
+        data = res.json();
+      }catch (ex) {
+        data = {}
+      }
+    }
     return data;
   }
 

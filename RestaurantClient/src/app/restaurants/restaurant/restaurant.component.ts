@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Restaurant } from 'app/shared/restaurant.interface';
 import { RestaurantsService } from 'app/restaurants/restaurants.service';
-import { Router } from '@angular/router';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -12,8 +11,7 @@ import { Router } from '@angular/router';
 export class RestaurantComponent implements OnInit {
   @Input() restaurant: Restaurant;
 
-  constructor(private resService: RestaurantsService,
-              private router: Router) { }
+  constructor(private resService: RestaurantsService) { }
 
   ngOnInit() {
   }
@@ -23,7 +21,7 @@ export class RestaurantComponent implements OnInit {
     if (ans) {
       this.resService.deleteRestaurant(this.restaurant.restaurantID)
                       .subscribe(
-                         () => this.router.navigate(['restaurants?ref=1'])
+                         () =>  window.location.reload()
                       )
     }
   }
