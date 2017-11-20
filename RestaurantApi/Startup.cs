@@ -29,7 +29,7 @@ namespace RestaurantApi
                  o.AddPolicy("AllowAll", builder => {
                 builder.AllowAnyHeader();
                 builder.AllowAnyMethod();
-                builder.WithOrigins("http://localhost");
+                builder.AllowAnyOrigin();
                 builder.AllowCredentials();
             }));
 
