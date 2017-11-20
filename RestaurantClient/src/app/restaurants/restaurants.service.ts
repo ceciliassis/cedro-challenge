@@ -22,11 +22,14 @@ export class RestaurantsService {
                     .catch(this.errorService.handleError);
   }
 
-  public getRestaurant(name: string) {
-
+  public createRestaurant(name: string) {
+    return this.http.post(this.API_URL, { name: name })
+                    .map(this.extractData)
+                    .catch(this.errorService.handleError);
   }
 
   public deleteRestaurant(id: number) {
+    // TODO: ver error retornado qando da certo
     return this.http.delete(this.API_URL + id)
                     .map(this.extractData)
                     .catch(this.errorService.handleError);
@@ -34,7 +37,6 @@ export class RestaurantsService {
 
   private extractData(res: Response) {
     const data = res.json();
-    console.log(data);
     return data;
   }
 

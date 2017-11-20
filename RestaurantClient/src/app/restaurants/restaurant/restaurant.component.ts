@@ -19,7 +19,7 @@ export class RestaurantComponent implements OnInit {
   }
 
   public delete() {
-    const ans = confirm('Tem certeza que deseja deletar o restaurante: ' + this.restaurant.name + '?');
+    const ans = confirm('Tem certeza que deseja deletar o restaurante ' + this.restaurant.name + '?');
     if (ans) {
       this.resService.deleteRestaurant(this.restaurant.restaurantID)
                       .subscribe(
