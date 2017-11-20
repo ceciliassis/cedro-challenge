@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Restaurant } from 'app/shared/restaurant.interface';
 import { RestaurantsService } from 'app/restaurants/restaurants.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -11,7 +12,9 @@ import { RestaurantsService } from 'app/restaurants/restaurants.service';
 export class RestaurantComponent implements OnInit {
   @Input() restaurant: Restaurant;
 
-  constructor(private resService: RestaurantsService) { }
+  constructor(private resService: RestaurantsService,
+              private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
@@ -27,7 +30,8 @@ export class RestaurantComponent implements OnInit {
   }
 
   public edit() {
-
+    this.resService.storeRestaurant(this.restaurant);
+    this.router.navigate(['edit'], { relativeTo: this.route });
   }
 
 }

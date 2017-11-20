@@ -14,7 +14,7 @@ import { DishesComponent } from './dishes/dishes.component';
 
 import { ErrorService } from 'app/shared/error.service';
 import { RestaurantsService } from 'app/restaurants/restaurants.service';
-import { CreateRestaurantComponent } from './restaurants/create-restaurant/create-restaurant.component';
+import { SaveRestaurantComponent } from './restaurants/save-restaurant/save-restaurant.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import { CreateRestaurantComponent } from './restaurants/create-restaurant/creat
     SearchRestaurantComponent,
     RestaurantComponent,
     DishesComponent,
-    CreateRestaurantComponent
+    SaveRestaurantComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +36,8 @@ import { CreateRestaurantComponent } from './restaurants/create-restaurant/creat
       {path: '',            component: HomeComponent},
       {path: 'restaurants', component: RestaurantsComponent},
       {path: 'dishes',      component: DishesComponent},
-      {path: 'restaurants/create', component: CreateRestaurantComponent}
+      {path: 'restaurants/edit', component: SaveRestaurantComponent},
+      {path: 'restaurants/create', component: SaveRestaurantComponent}
     ])
   ],
   providers: [ErrorService, RestaurantsService],

@@ -12,6 +12,7 @@ import { Restaurant } from '../shared/restaurant.interface';
 @Injectable()
 export class RestaurantsService {
   private API_URL = 'http://localhost:5000/api/restaurants/';
+  private restaurant: Restaurant;
 
   constructor(private http: Http,
               private errorService: ErrorService) { }
@@ -45,6 +46,14 @@ export class RestaurantsService {
       }
     }
     return data;
+  }
+
+  public storeRestaurant(res: Restaurant) {
+    this.restaurant = res;
+  }
+
+  public getStoredRestaurant(): Restaurant {
+    return this.restaurant;
   }
 
 }
