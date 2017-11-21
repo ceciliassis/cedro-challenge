@@ -21,14 +21,6 @@ namespace RestaurantApi.Controllers
             _context = context;
         }
         
-        // GET api/restaurants
-        [HttpGet]
-        public async Task<IEnumerable<Dish>> GetAll() {
-            return await _context.Dishes
-                                 .Include(d => d.Restaurant)
-                                 .ToListAsync();
-        }
-
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] Dish dish) {
             if(dish == null) {
@@ -64,5 +56,7 @@ namespace RestaurantApi.Controllers
                 return Json(new { error = "Ocorreu um erro interno, por favor tente novamente." });
             }
         }
+
+
     }
 }
