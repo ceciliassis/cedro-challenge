@@ -34,7 +34,8 @@ namespace RestaurantApi.Controllers
               return BadRequest();
             }
 
-            var res = await _context.Restaurants.FirstOrDefaultAsync(r => r.Name == name);
+            var res = await _context.Restaurants
+                                    .FirstOrDefaultAsync(r => r.Name == name);
 
             if(res == null){
                 return NotFound();
