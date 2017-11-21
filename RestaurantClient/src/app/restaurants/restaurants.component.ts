@@ -14,6 +14,10 @@ export class RestaurantsComponent implements OnInit {
   constructor(private resService: RestaurantsService) { }
 
   ngOnInit() {
+    this.getRestaurants();
+  }
+
+  private getRestaurants() {
     this.resService.getRestaurants().subscribe(
       (rests) => {
         this.restaurants = rests
@@ -23,6 +27,10 @@ export class RestaurantsComponent implements OnInit {
 
   private onRestaurantReceived(rest) {
     this.restaurants = [rest];
+  }
+
+  private onRestaurantDeleted() {
+    this.getRestaurants();
   }
 
 }

@@ -12,7 +12,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let res of restaurants" app-restaurant [restaurant]="res" >
+      <tr *ngFor="let res of restaurants" 
+          app-restaurant 
+          [restaurant]="res" 
+          (restaurantDeleted)="onRestaurantDeleted()"
+      >
       </tr>
     </tbody>
   </table>

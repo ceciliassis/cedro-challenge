@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Restaurant } from 'app/shared/restaurant.interface';
 import { RestaurantsService } from 'app/restaurants/restaurants.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -11,6 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class RestaurantComponent implements OnInit {
   @Input() restaurant: Restaurant;
+  @Output() restaurantDeleted = new EventEmitter<void>();
 
   constructor(private resService: RestaurantsService,
               private router: Router,
@@ -24,8 +25,8 @@ export class RestaurantComponent implements OnInit {
     if (ans) {
       this.resService.deleteRestaurant(this.restaurant.restaurantID)
                       .subscribe(
-                         () =>  window.location.reload()
-                      )
+                         () =>  this.restaurantDeleted.emit()
+                      );
     }
   }
 
@@ -33,5 +34,4 @@ export class RestaurantComponent implements OnInit {
     this.resService.storeRestaurant(this.restaurant);
     this.router.navigate(['edit'], { relativeTo: this.route });
   }
-
 }
