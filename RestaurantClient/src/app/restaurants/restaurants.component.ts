@@ -11,12 +11,18 @@ import { RestaurantsService } from 'app/restaurants/restaurants.service';
 })
 export class RestaurantsComponent implements OnInit {
   restaurants: Restaurant[];
-  constructor(private restaurantsServ: RestaurantsService) { }
+  constructor(private resService: RestaurantsService) { }
 
   ngOnInit() {
-    this.restaurantsServ.getRestaurants().subscribe(
-      (rests) => this.restaurants = rests
+    this.resService.getRestaurants().subscribe(
+      (rests) => {
+        this.restaurants = rests
+      }
     );
+  }
+
+  private onRestaurantReceived(rest) {
+    this.restaurants = [rest];
   }
 
 }

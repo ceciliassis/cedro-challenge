@@ -1,6 +1,8 @@
 <h3>Restaurantes</h3>
 <div class="offset-sm-1">
-  <app-search-restaurant></app-search-restaurant>
+  <app-search-restaurant 
+      (restaurantReceived)="onRestaurantReceived($event)">
+  </app-search-restaurant>
   <table class="table table-striped table-bordered">
     <thead>
       <tr>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, URLSearchParams } from '@angular/http';
 
 import { ErrorService } from '../shared/error.service';
 
@@ -23,13 +23,21 @@ export class RestaurantsService {
                     .catch(this.errorService.handleError);
   }
 
-  public createRestaurant(name: string) {
+  public getRestaurant(name: string): Observable<Restaurant> {
+    const params = new URLSearchParams();
+    params.set('name', name);
+    return this.http.get(this.API_URL + 'search', { params })
+                    .map(this.extractData)
+                    .catch(this.errorService.handleError);
+  }
+
+  public createRestaurant(name: string): Observable<void> {
     return this.http.post(this.API_URL, { name: name })
                     .map(this.extractData)
                     .catch(this.errorService.handleError);
   }
 
-  public editRestaurant(rest: Restaurant) {
+  public editRestaurant(rest: Restaurant): Observable<void> {
     const body = {
       restaurantID: rest.restaurantID,
       name: rest.name
@@ -39,7 +47,7 @@ export class RestaurantsService {
                     .catch(this.errorService.handleError);
   }
 
-  public deleteRestaurant(id: number) {
+  public deleteRestaurant(id: number): Observable<void> {
     return this.http.delete(this.API_URL + id)
                     .map(this.extractData)
                     .catch(this.errorService.handleError);

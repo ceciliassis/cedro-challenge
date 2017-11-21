@@ -11,17 +11,20 @@ export class ErrorService {
 
   public handleError(error: Response | any) {
     let errorMsg: string;
+    let body, err;
     if (error instanceof Response) {
-      const body = error.json() || '';
-      const err  = body.error || JSON.stringify(body);
+      try {
+        body = error.json() || '';
+      } catch (ex) {
+        body = '';
+      }
+      err      = body.error || JSON.stringify(body);
       errorMsg = `${error.status} - ${error.statusText || ''}: ${err}`
     } else {
       errorMsg = error.message ? error.message : error.toString();
     }
-
-    console.error(errorMsg);
-    alert(errorMsg);
+    // console.error(errorMsg);
+    alert('ERROR! ' + errorMsg);
     return Observable.throw(errorMsg);
   }
-
 }
