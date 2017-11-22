@@ -12,7 +12,7 @@ In order to run it please open a shell and:
 
 1. Go to the RestaurantApi folder, type `dotnet run`
 2. Open another shell, go to the RestaurantCLient folder, type:
-```shell
+``` shell
 npm i
 ng serve
 ```

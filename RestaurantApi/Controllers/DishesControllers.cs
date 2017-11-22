@@ -20,6 +20,23 @@ namespace RestaurantApi.Controllers
         public DishesController(ManagementContext context){
             _context = context;
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll() {
+            var dishes = await _context.Dishes
+                                  .Join(_context.Restaurants, 
+                                        d => d.RestaurantID, 
+                                        r=> r.RestaurantID, 
+                                        (d, r) => new {dish = d, rest = r}
+                                   ).Select(selectResult => new {
+                                        dishId = selectResult.dish.DishID, 
+                                        dishName = selectResult.dish.Name, 
+                                        dishPrice = selectResult.dish.Price,
+                                        restID = selectResult.rest.RestaurantID,
+                                        restName = selectResult.rest.Name }
+                                   ).ToListAsync();
+            return Ok(dishes);
+        }
         
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] Dish dish) {
@@ -57,6 +74,9 @@ namespace RestaurantApi.Controllers
             }
         }
 
-
     }
+
+    // public class DishRestaurant {
+    //     public int DishId { get; set}
+    // }
 }
