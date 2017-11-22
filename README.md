@@ -2,11 +2,10 @@
 .NET at the backend and Angular at the front.
 
 # Run
-**If you don't have some of the following programs installed, please do:
-- .NET 2.0
-- NPM
-- NodeJS
-**
+**If you don't have some of the following programs installed, please do:**
+**- .NET 2.0**
+**- NPM**
+**- NodeJS**
 
 In order to run it please open a shell and:
 
