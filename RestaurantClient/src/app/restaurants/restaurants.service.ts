@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
-import { Restaurant } from '../shared/restaurant.interface';
+import { Restaurant } from './restaurant.interface';
 
 @Injectable()
 export class RestaurantsService {

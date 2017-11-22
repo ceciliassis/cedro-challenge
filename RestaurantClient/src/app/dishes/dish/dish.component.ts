@@ -1,5 +1,5 @@
 import { Component, Input, LOCALE_ID, Output, EventEmitter } from '@angular/core';
-import { Dish } from 'app/shared/dish.interface';
+import { Dish } from '../dish.interface';
 import { DishesService } from 'app/dishes/dishes.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -23,10 +23,13 @@ export class DishComponent {
     this.router.navigate(['edit'], { relativeTo: this.route });
   }
   private delete() {
-    this.dishesService.deleteDish(this.dish.dishID)
-                      .subscribe(
-                        () => this.dishDeleted.emit()
-                      );
+    const ans = confirm('Tem certeza de que deseja remover o prato ' + this.dish.name + ' do restaurate ' + this.dish.restName + '?');
+    if(ans){
+          this.dishesService.deleteDish(this.dish.dishID)
+                            .subscribe(
+                              () => this.dishDeleted.emit()
+                            );
+    }
   }
 
 }

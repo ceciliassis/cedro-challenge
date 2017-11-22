@@ -1,4 +1,4 @@
-import { Dish } from './dish.interface';
+import { Dish } from 'app/dishes/dish.interface';
 
 export interface Restaurant {
   restaurantID: number;

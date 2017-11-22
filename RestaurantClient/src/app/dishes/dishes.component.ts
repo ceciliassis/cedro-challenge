@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DishesService } from 'app/dishes/dishes.service';
-import { Dish } from 'app/shared/dish.interface';
+import { Dish } from './dish.interface';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({

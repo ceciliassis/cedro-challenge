@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RestaurantsService } from 'app/restaurants/restaurants.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Restaurant } from 'app/shared/restaurant.interface';
+import { Restaurant } from '../restaurant.interface';
 
 @Component({
   selector: 'app-save-restaurant',

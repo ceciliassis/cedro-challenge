@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ErrorService } from '../shared/error.service';
 import { Http, Response } from '@angular/http';
-import { Dish } from 'app/shared/dish.interface';
+import { Dish } from './dish.interface';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';

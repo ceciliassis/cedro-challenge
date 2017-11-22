@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Dish } from 'app/shared/dish.interface';
+import { Dish } from '../dish.interface';
 import { DishesService } from 'app/dishes/dishes.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RestaurantsService } from 'app/restaurants/restaurants.service';
-import { Restaurant } from 'app/shared/restaurant.interface';
+import { Restaurant } from 'app/restaurants/restaurant.interface';
 
 @Component({
   selector: 'app-save-dish',

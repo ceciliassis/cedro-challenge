@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-import { Restaurant } from 'app/shared/restaurant.interface';
-
+import { Restaurant } from './restaurant.interface';
 import { RestaurantsService } from 'app/restaurants/restaurants.service';
 
 @Component({

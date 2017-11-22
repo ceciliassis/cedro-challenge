@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Restaurant } from 'app/shared/restaurant.interface';
-import { RestaurantsService } from 'app/restaurants/restaurants.service';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Restaurant } from '../restaurant.interface';
+import { RestaurantsService } from 'app/restaurants/restaurants.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -9,7 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './restaurant.component.html',
   styleUrls: ['./restaurant.component.css']
 })
-export class RestaurantComponent implements OnInit {
+export class RestaurantComponent {
   @Input() restaurant: Restaurant;
   @Output() restaurantDeleted = new EventEmitter<void>();
 
@@ -17,11 +17,8 @@ export class RestaurantComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute) { }
 
-  ngOnInit() {
-  }
-
   public delete() {
-    const ans = confirm('Tem certeza que deseja deletar o restaurante ' + this.restaurant.name + '?');
+    const ans = confirm('Tem certeza de que deseja remover o restaurante ' + this.restaurant.name + '?');
     if (ans) {
       this.restService.deleteRestaurant(this.restaurant.restaurantID)
                       .subscribe(
