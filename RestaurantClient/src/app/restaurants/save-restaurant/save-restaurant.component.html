@@ -12,7 +12,7 @@
               [(ngModel)]="restaurant.name"
               required
       >
-      <div [hidden]="restaurant.name!=''"
+      <div [hidden]="restaurant.name"
             class="alert alert-danger">
         Nome é obrigatório.
       </div>
@@ -20,7 +20,7 @@
     <br>
     <button type="button" 
             class="btn btn-danger offset-sm-3"
-            (click)="restaurant.name=''">
+            (click)="redirect()">
       <span class="oi oi-action-undo"></span> Cancelar
     </button>
     <button type="submit" 
