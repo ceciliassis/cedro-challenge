@@ -29,7 +29,7 @@ namespace RestaurantApi.Controllers
                                         r=> r.RestaurantID, 
                                         (d, r) => new {dish = d, rest = r}
                                    ).Select(selectResult => new {
-                                        dishId = selectResult.dish.DishID, 
+                                        dishID = selectResult.dish.DishID, 
                                         dishName = selectResult.dish.Name, 
                                         dishPrice = selectResult.dish.Price,
                                         restID = selectResult.rest.RestaurantID,
