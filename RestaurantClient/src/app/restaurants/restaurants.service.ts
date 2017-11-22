@@ -31,12 +31,6 @@ export class RestaurantsService {
                     .catch(this.errorService.handleError);
   }
 
-  public getResturantWithDishes(): Observable<Restaurant[]> {
-    return this.http.get(this.API_URL + 'dishes')
-                    .map(this.extractData)
-                    .catch(this.errorService.handleError);
-  }
-
   public createRestaurant(name: string): Observable<void> {
     return this.http.post(this.API_URL, { name: name })
                     .map(this.extractData)

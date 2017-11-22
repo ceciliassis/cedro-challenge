@@ -1,0 +1,22 @@
+<td class="text-center">
+  <button class="btn btn-outline-danger btn-sm"
+          (click)="delete()">
+    <span class="oi oi-minus"></span>
+  </button>
+</td>
+<td class="text-center">
+  <button class="btn btn-outline-primary btn-sm"
+          (click)="edit()">
+    <span class="oi oi-pencil"></span>
+  </button>
+</td>
+<td>
+  {{ dish.restName }}
+</td>
+<td>
+  {{ dish.dishName }}
+</td>
+<td>
+  <!-- currency pipe, formats the value for money, code:'BRL', symbol:true -->
+  {{ dish.dishPrice | currency:'BRL':true }}
+</td>

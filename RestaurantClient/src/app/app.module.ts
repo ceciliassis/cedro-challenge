@@ -15,6 +15,7 @@ import { DishesComponent } from './dishes/dishes.component';
 import { ErrorService } from 'app/shared/error.service';
 import { RestaurantsService } from 'app/restaurants/restaurants.service';
 import { SaveRestaurantComponent } from './restaurants/save-restaurant/save-restaurant.component';
+import { DishComponent } from './dishes/dish/dish.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { SaveRestaurantComponent } from './restaurants/save-restaurant/save-rest
     SearchRestaurantComponent,
     RestaurantComponent,
     DishesComponent,
-    SaveRestaurantComponent
+    SaveRestaurantComponent,
+    DishComponent
   ],
   imports: [
     BrowserModule,
