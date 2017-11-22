@@ -12,7 +12,7 @@ export class SaveRestaurantComponent implements OnInit {
   restaurant: Restaurant;
   path: string;
 
-  constructor(private resService: RestaurantsService,
+  constructor(private restService: RestaurantsService,
               private router: Router,
               private route: ActivatedRoute) {
     this.restaurant = { restaurantID: null, dishes: null, name: '' };
@@ -21,7 +21,7 @@ export class SaveRestaurantComponent implements OnInit {
 
   ngOnInit() {
     this.restaurant = this.path === 'edit' ?
-      this.resService.getStoredRestaurant() : this.restaurant;
+      this.restService.getStoredRestaurant() : this.restaurant;
   }
 
   private save() {
@@ -36,14 +36,14 @@ export class SaveRestaurantComponent implements OnInit {
   }
 
   private create() {
-    this.resService.createRestaurant(this.restaurant.name)
+    this.restService.createRestaurant(this.restaurant.name)
                    .subscribe(
                       () => this.redirect()
                     );
   }
 
   private edit() {
-    this.resService.editRestaurant(this.restaurant)
+    this.restService.editRestaurant(this.restaurant)
                    .subscribe(
                       () => this.redirect()
                    )

@@ -4,12 +4,11 @@
     <legend class="col-sm-3 col-md-2">Dados</legend>
     <label class="col-sm-5 offset-sm-1 col-form-label">Nome do restaurante:</label>
       <div class="col-sm-10 col-md-6 offset-sm-1">
-        <input 
-              class="form-control"
-              type="text"
-              name="restaurant.name"
-              [(ngModel)]="restaurant.name"
-              required
+        <input class="form-control"
+               type="text"
+               name="restaurant.name"
+               [(ngModel)]="restaurant.name"
+               required
         >
         <div [hidden]="restaurant.name!=''"
               class="alert alert-danger">

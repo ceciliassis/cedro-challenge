@@ -11,14 +11,14 @@ import { RestaurantsService } from 'app/restaurants/restaurants.service';
 })
 export class RestaurantsComponent implements OnInit {
   restaurants: Restaurant[];
-  constructor(private resService: RestaurantsService) { }
+  constructor(private restService: RestaurantsService) { }
 
   ngOnInit() {
     this.getRestaurants();
   }
 
   private getRestaurants() {
-    this.resService.getRestaurants().subscribe(
+    this.restService.getRestaurants().subscribe(
       (rests) => {
         this.restaurants = rests
       }

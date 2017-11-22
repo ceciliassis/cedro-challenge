@@ -14,7 +14,7 @@ export class SearchRestaurantComponent implements OnInit {
 
   constructor(private router: Router,
               private route:  ActivatedRoute,
-              private resService: RestaurantsService) { }
+              private restService: RestaurantsService) { }
 
   ngOnInit() {
   }
@@ -24,7 +24,7 @@ export class SearchRestaurantComponent implements OnInit {
   }
 
   private search() {
-    this.resService.getRestaurant(this.restaurantName)
+    this.restService.getRestaurant(this.restaurantName)
                   .subscribe(
                     (rest) => this.restaurantReceived.emit(rest)
                   );

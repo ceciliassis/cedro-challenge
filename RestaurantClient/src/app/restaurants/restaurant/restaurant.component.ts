@@ -13,7 +13,7 @@ export class RestaurantComponent implements OnInit {
   @Input() restaurant: Restaurant;
   @Output() restaurantDeleted = new EventEmitter<void>();
 
-  constructor(private resService: RestaurantsService,
+  constructor(private restService: RestaurantsService,
               private router: Router,
               private route: ActivatedRoute) { }
 
@@ -23,15 +23,15 @@ export class RestaurantComponent implements OnInit {
   public delete() {
     const ans = confirm('Tem certeza que deseja deletar o restaurante ' + this.restaurant.name + '?');
     if (ans) {
-      this.resService.deleteRestaurant(this.restaurant.restaurantID)
+      this.restService.deleteRestaurant(this.restaurant.restaurantID)
                       .subscribe(
-                         () =>  this.restaurantDeleted.emit()
+                        () => this.restaurantDeleted.emit()
                       );
     }
   }
 
   public edit() {
-    this.resService.storeRestaurant(this.restaurant);
+    this.restService.storeRestaurant(this.restaurant);
     this.router.navigate(['edit'], { relativeTo: this.route });
   }
 }
