@@ -15,7 +15,9 @@ export class RestaurantsService {
   private restaurant: Restaurant;
 
   constructor(private http: Http,
-              private errorService: ErrorService) { }
+              private errorService: ErrorService) {
+    this.resetRestaurant();
+  }
 
   public getRestaurants(): Observable<Restaurant[]> {
     return this.http.get(this.API_URL)
@@ -71,6 +73,13 @@ export class RestaurantsService {
 
   public getStoredRestaurant(): Restaurant {
     return this.restaurant;
+  }
+
+  private resetRestaurant() {
+    this.restaurant = {
+      restaurantID: null,
+      dishes: null,
+      name: '' };
   }
 
 }

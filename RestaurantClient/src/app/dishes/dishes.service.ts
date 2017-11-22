@@ -13,7 +13,9 @@ export class DishesService {
   private dish: Dish;
 
   constructor(private http: Http,
-              private errorService: ErrorService) { }
+              private errorService: ErrorService) {
+    this.resetDish();
+  }
 
   public getDishes(): Observable<Dish[]> {
     return this.http.get(this.API_URL)
@@ -48,6 +50,16 @@ export class DishesService {
       }
     }
     return data;
+  }
+
+  private resetDish() {
+    this.dish = {
+      dishID: null,
+      dishName: '',
+      dishPrice: null,
+      restID: -1,
+      restName: ''
+    };
   }
 
   public storeDish(dish: Dish): void {
