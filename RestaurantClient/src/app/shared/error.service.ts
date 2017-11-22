@@ -23,7 +23,6 @@ export class ErrorService {
     } else {
       errorMsg = error.message ? error.message : error.toString();
     }
-    // console.error(errorMsg);
     alert('ERROR! ' + errorMsg);
     return Observable.throw(errorMsg);
   }

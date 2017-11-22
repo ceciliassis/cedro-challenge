@@ -27,11 +27,6 @@ namespace RestaurantApi.Controllers
             return await _context.Restaurants.ToListAsync();
         }
 
-                [HttpGet("dishes")]
-        public async Task<IEnumerable<Restaurant>> GetAllDishes() {
-            return await _context.Restaurants.Include(r => r.Dishes).ToListAsync();
-        }
-
         // GET api/restaurants/search?name=
         [HttpGet("search")]
         public async Task<IActionResult> GetRestaurant(string name){
