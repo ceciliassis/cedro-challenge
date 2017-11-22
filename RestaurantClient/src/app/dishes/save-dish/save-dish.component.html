@@ -7,8 +7,8 @@
     </label>
     <div class="col-sm-10 col-md-6 offset-sm-1">
       <select class="form-control"
-              name="dish.restID"
-              [(ngModel)]="dish.restID"
+              name="dish.restaurantID"
+              [(ngModel)]="dish.restaurantID"
               required
       >
         <option value="-1">
@@ -19,12 +19,11 @@
             {{ rest.name }}
         </option>
       </select>
-      <div [hidden]="dish.restID && dish.restID > -1"
+      <div [hidden]="dish.restaurantID && dish.restaurantID > -1"
            class="alert alert-danger">
         Restaurante é obrigatório.
       </div>
     </div>
-
 
     <label class="col-sm-5 offset-sm-1 col-form-label">
       Prato:
@@ -32,11 +31,11 @@
     <div class="col-sm-10 col-md-6 offset-sm-1">
       <input class="form-control"
             type="text"
-            name="dish.dishName"
-            [(ngModel)]="dish.dishName"
+            name="dish.name"
+            [(ngModel)]="dish.name"
             required
       >
-      <div [hidden]="dish.dishName"
+      <div [hidden]="dish.name"
             class="alert alert-danger">
         Nome é obrigatório.
       </div>
@@ -49,12 +48,11 @@
       <input class="form-control"
             type="number"
             min="0"
-            name="dish.dishPrice"
-            [(ngModel)]="dish.dishPrice"
-            id="dishPrice"
+            name="dish.price"
+            [(ngModel)]="dish.price"
             required
       >
-      <div [hidden]="dish.dishPrice"
+      <div [hidden]="dish.price"
             class="alert alert-danger">
         Preço é obrigatório.
       </div>

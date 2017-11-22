@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Dish } from 'app/shared/dish.interface';
 import { DishesService } from 'app/dishes/dishes.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -43,7 +43,7 @@ export class SaveDishComponent implements OnInit {
 
   private create() {
     try {
-      this.dish.dishPrice = Number(this.dish.dishPrice);
+      this.dish.price = Number(this.dish.price);
           this.dishesService.createDish(this.dish)
                             .subscribe(
                               () => this.redirect()
@@ -54,7 +54,9 @@ export class SaveDishComponent implements OnInit {
   }
 
   private edit() {
-    console.log('TODO: save edited values to the DB');
+    this.dishesService.editDish(this.dish).subscribe(
+      () => this.redirect()
+    )
   }
 
   private redirect() {
@@ -64,16 +66,19 @@ export class SaveDishComponent implements OnInit {
   private resetDish() {
     this.dish = {
       dishID: null,
-      dishName: '',
-      dishPrice: null,
-      restID: -1,
+      name: '',
+      price: null,
+      restaurantID: -1,
       restName: ''
     };
   }
 
   private getRestaurants() {
     this.restService.getRestaurants().subscribe(
-      (rests) => this.restaurants = rests
+      (rests) => {
+        this.restaurants = rests
+        console.log(this.restaurants);
+      }
     )
   }
 }

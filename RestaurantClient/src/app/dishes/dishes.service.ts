@@ -25,16 +25,29 @@ export class DishesService {
 
   public createDish(dish: Dish): Observable<void> {
     const body = {
-      name: dish.dishName,
-      price: dish.dishPrice,
-      restaurantID: dish.restID
+      name: dish.name,
+      price: dish.price,
+      restaurantID: dish.restaurantID
     };
     return this.http.post(this.API_URL, body)
                     .map(this.extractData)
                     .catch(this.errorService.handleError);
   }
 
-  public deleteDish(id: number) {
+  public editDish(dish: Dish): Observable<void> {
+    const body = {
+      dishID: this.dish.dishID,
+      name: dish.name,
+      price: dish.price,
+      restaurantID: dish.restaurantID
+    };
+
+    return this.http.patch(this.API_URL + this.dish.dishID, body)
+                    .map(this.extractData)
+                    .catch(this.errorService.handleError);
+  }
+
+  public deleteDish(id: number): Observable<void> {
     return this.http.delete(this.API_URL + id)
                     .map(this.extractData)
                     .catch(this.errorService.handleError);
@@ -55,9 +68,9 @@ export class DishesService {
   private resetDish() {
     this.dish = {
       dishID: null,
-      dishName: '',
-      dishPrice: null,
-      restID: -1,
+      name: '',
+      price: null,
+      restaurantID: -1,
       restName: ''
     };
   }
