@@ -1,6 +1,7 @@
 export interface Dish {
-  dishID: number;
-  name: string;
-  price: number;
-  restaurantID: number;
+  dishID:    number;
+  dishName:  string;
+  dishPrice: number;
+  restID:    number;
+  restName:  string;
 }
