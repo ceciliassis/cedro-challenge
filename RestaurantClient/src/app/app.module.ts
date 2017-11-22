@@ -10,12 +10,15 @@ import { HomeComponent } from './home/home.component';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { SearchRestaurantComponent } from './restaurants/search-restaurant/search-restaurant.component';
 import { RestaurantComponent } from './restaurants/restaurant/restaurant.component';
-import { DishesComponent } from './dishes/dishes.component';
+import { SaveRestaurantComponent } from './restaurants/save-restaurant/save-restaurant.component';
 
 import { ErrorService } from 'app/shared/error.service';
 import { RestaurantsService } from 'app/restaurants/restaurants.service';
-import { SaveRestaurantComponent } from './restaurants/save-restaurant/save-restaurant.component';
+import { DishesService } from 'app/dishes/dishes.service';
+
+import { DishesComponent } from './dishes/dishes.component';
 import { DishComponent } from './dishes/dish/dish.component';
+import { SaveDishComponent } from './dishes/save-dish/save-dish.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,8 @@ import { DishComponent } from './dishes/dish/dish.component';
     RestaurantComponent,
     DishesComponent,
     SaveRestaurantComponent,
-    DishComponent
+    DishComponent,
+    SaveDishComponent
   ],
   imports: [
     BrowserModule,
@@ -35,14 +39,14 @@ import { DishComponent } from './dishes/dish/dish.component';
     JsonpModule,
     FormsModule,
     RouterModule.forRoot([
-      {path: '',            component: HomeComponent},
+      {path: '', component: HomeComponent},
       {path: 'restaurants', component: RestaurantsComponent},
-      {path: 'dishes',      component: DishesComponent},
       {path: 'restaurants/edit', component: SaveRestaurantComponent},
-      {path: 'restaurants/create', component: SaveRestaurantComponent}
+      {path: 'restaurants/create', component: SaveRestaurantComponent},      {path: 'dishes', component: DishesComponent},
+      {path: 'dishes/create', component: SaveDishComponent}
     ])
   ],
-  providers: [ErrorService, RestaurantsService],
+  providers: [ErrorService, RestaurantsService, DishesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

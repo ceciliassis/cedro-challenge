@@ -25,8 +25,8 @@ export class SearchRestaurantComponent implements OnInit {
 
   private search() {
     this.restService.getRestaurant(this.restaurantName)
-                  .subscribe(
-                    (rest) => this.restaurantReceived.emit(rest)
-                  );
+                    .subscribe(
+                      (rest) => this.restaurantReceived.emit(rest)
+                    );
   }
 }

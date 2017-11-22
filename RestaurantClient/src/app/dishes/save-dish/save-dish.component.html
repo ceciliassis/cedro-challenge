@@ -1,0 +1,77 @@
+<h3>Cadastro de Prato</h3>
+<form (ngSubmit)="save()" #dishForm="ngForm">
+  <fieldset class="form-group offset-sm-1" style="border: 2px solid #d2e7f7; padding-bottom: 2%">
+    <legend class="col-sm-3 col-md-2">Dados</legend>
+    <label class="col-sm-5 offset-sm-1 col-form-label">
+      Restaurante:
+    </label>
+    <div class="col-sm-10 col-md-6 offset-sm-1">
+      <select class="form-control"
+              name="dish.restID"
+              [(ngModel)]="dish.restID"
+              required
+      >
+        <option value="-1">
+          Restaurante ...
+        </option>
+        <option *ngFor="let rest of restaurants"
+                [ngValue]="rest.restaurantID">
+            {{ rest.name }}
+        </option>
+      </select>
+      <div [hidden]="dish.restID && dish.restID > -1"
+           class="alert alert-danger">
+        Restaurante é obrigatório.
+      </div>
+    </div>
+
+
+    <label class="col-sm-5 offset-sm-1 col-form-label">
+      Prato:
+    </label>
+    <div class="col-sm-10 col-md-6 offset-sm-1">
+      <input class="form-control"
+            type="text"
+            name="dish.dishName"
+            [(ngModel)]="dish.dishName"
+            required
+      >
+      <div [hidden]="dish.dishName"
+            class="alert alert-danger">
+        Nome é obrigatório.
+      </div>
+    </div>
+
+    <label class="col-sm-5 offset-sm-1 col-form-label">
+      Preço:
+    </label>
+    <div class="col-sm-10 col-md-6 offset-sm-1">
+      <input class="form-control"
+            type="number"
+            min="0"
+            name="dish.dishPrice"
+            [(ngModel)]="dish.dishPrice"
+            id="dishPrice"
+            required
+      >
+      <div [hidden]="dish.dishPrice"
+            class="alert alert-danger">
+        Preço é obrigatório.
+      </div>
+    </div>
+    <br>
+    <button type="button" 
+            class="btn btn-danger offset-sm-3"
+            (click)="resetDish()">
+      <span class="oi oi-action-undo"></span> Cancelar
+    </button>
+    <button type="submit" 
+            class="btn btn-success"
+            [disabled]="!dishForm.form.valid"
+    >
+      <span class="oi oi-task"></span> Salvar
+    </button>
+  </fieldset>
+</form>
+  
+  

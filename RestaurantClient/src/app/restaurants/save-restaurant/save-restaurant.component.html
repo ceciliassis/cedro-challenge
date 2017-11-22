@@ -2,31 +2,33 @@
 <form (ngSubmit)="save()" #restaurantForm="ngForm">
   <fieldset class="form-group offset-sm-1" style="border: 2px solid #d2e7f7; padding-bottom: 2%">
     <legend class="col-sm-3 col-md-2">Dados</legend>
-    <label class="col-sm-5 offset-sm-1 col-form-label">Nome do restaurante:</label>
-      <div class="col-sm-10 col-md-6 offset-sm-1">
-        <input class="form-control"
-               type="text"
-               name="restaurant.name"
-               [(ngModel)]="restaurant.name"
-               required
-        >
-        <div [hidden]="restaurant.name!=''"
-              class="alert alert-danger">
-          Nome é obrigatório.
-        </div>
-      </div>
-      <br>
-      <button type="button" 
-              class="btn btn-danger offset-sm-3"
-              (click)="restaurant.name=''">
-        <span class="oi oi-action-undo"></span> Cancelar
-      </button>
-      <button type="submit" 
-              class="btn btn-success"
-              [disabled]="!restaurantForm.form.valid"
+    <label class="col-sm-5 offset-sm-1 col-form-label">
+      Nome do restaurante:
+    </label>
+    <div class="col-sm-10 col-md-6 offset-sm-1">
+      <input class="form-control"
+              type="text"
+              name="restaurant.name"
+              [(ngModel)]="restaurant.name"
+              required
       >
-        <span class="oi oi-task"></span> Salvar
-      </button>
+      <div [hidden]="restaurant.name!=''"
+            class="alert alert-danger">
+        Nome é obrigatório.
+      </div>
+    </div>
+    <br>
+    <button type="button" 
+            class="btn btn-danger offset-sm-3"
+            (click)="restaurant.name=''">
+      <span class="oi oi-action-undo"></span> Cancelar
+    </button>
+    <button type="submit" 
+            class="btn btn-success"
+            [disabled]="!restaurantForm.form.valid"
+    >
+      <span class="oi oi-task"></span> Salvar
+    </button>
   </fieldset>
 </form>
   
