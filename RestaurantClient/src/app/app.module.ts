@@ -43,7 +43,8 @@ import { SaveDishComponent } from './dishes/save-dish/save-dish.component';
       {path: 'restaurants', component: RestaurantsComponent},
       {path: 'restaurants/edit', component: SaveRestaurantComponent},
       {path: 'restaurants/create', component: SaveRestaurantComponent},      {path: 'dishes', component: DishesComponent},
-      {path: 'dishes/create', component: SaveDishComponent}
+      {path: 'dishes/create', component: SaveDishComponent},
+      {path: 'dishes/edit', component: SaveDishComponent}
     ])
   ],
   providers: [ErrorService, RestaurantsService, DishesService],

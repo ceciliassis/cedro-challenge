@@ -15,13 +15,21 @@ export class SaveRestaurantComponent implements OnInit {
   constructor(private restService: RestaurantsService,
               private router: Router,
               private route: ActivatedRoute) {
-    this.restaurant = { restaurantID: null, dishes: null, name: '' };
+    this.resetRestaurant();
     this.path = this.route.snapshot.url[1].path;
   }
 
   ngOnInit() {
-    this.restaurant = this.path === 'edit' ?
-      this.restService.getStoredRestaurant() : this.restaurant;
+    if (this.path === 'edit') {
+      this.restaurant = this.restService.getStoredRestaurant();
+    }
+  }
+
+  private resetRestaurant() {
+    this.restaurant = {
+      restaurantID: null,
+      dishes: null,
+      name: '' };
   }
 
   private save() {

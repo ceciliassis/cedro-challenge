@@ -25,29 +25,36 @@ export class SaveDishComponent implements OnInit {
 
   ngOnInit() {
     this.getRestaurants();
+    if (this.path === 'edit') {
+      this.dish = this.dishesService.getStoredDish();
+    }
   }
 
   private save() {
     switch (this.path) {
-      // case 'edit':
-        // this.edit();
-        // break;
+      case 'edit':
+        this.edit();
+        break;
       case 'create':
         this.create();
         break;
     }
   }
 
-
   private create() {
     try {
       this.dish.dishPrice = Number(this.dish.dishPrice);
-          this.dishesService.createDish(this.dish).subscribe(
-      () => this.redirect()
-    )
+          this.dishesService.createDish(this.dish)
+                            .subscribe(
+                              () => this.redirect()
+                            )
     }catch (ex) {
       alert('Por favor, digite um valor válido.');
     }
+  }
+
+  private edit() {
+    console.log('TODO: save edited values to the DB');
   }
 
   private redirect() {

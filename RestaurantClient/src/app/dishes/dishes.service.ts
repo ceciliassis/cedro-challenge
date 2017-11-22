@@ -10,6 +10,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class DishesService {
   private API_URL = 'http://localhost:5000/api/dishes/';
+  private dish: Dish;
 
   constructor(private http: Http,
               private errorService: ErrorService) { }
@@ -47,5 +48,13 @@ export class DishesService {
       }
     }
     return data;
+  }
+
+  public storeDish(dish: Dish): void {
+    this.dish = dish;
+  }
+
+  public getStoredDish(): Dish {
+    return this.dish;
   }
 }
