@@ -34,7 +34,8 @@ namespace RestaurantApi.Controllers
                                         price = selectResult.dish.Price,
                                         restaurantID = selectResult.rest.RestaurantID,
                                         restName = selectResult.rest.Name }
-                                   ).ToListAsync();
+                                   ).OrderBy(sres => sres.restaurantID)
+                                   .ToListAsync();
             return Ok(dishes);
         }
         
@@ -104,8 +105,4 @@ namespace RestaurantApi.Controllers
         }
 
     }
-
-    // public class DishRestaurant {
-    //     public int DishId { get; set}
-    // }
 }
