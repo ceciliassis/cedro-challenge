@@ -18,7 +18,8 @@
     </thead>
     <tbody>
       <tr *ngFor="let dish of dishes"
-          app-dish 
+          app-dish
+          (dishDeleted)="onDishDeleted()"
           [dish] = "dish"
       >
       </tr>

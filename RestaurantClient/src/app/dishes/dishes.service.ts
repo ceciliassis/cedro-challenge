@@ -31,6 +31,12 @@ export class DishesService {
                     .catch(this.errorService.handleError);
   }
 
+  public deleteDish(id: number) {
+    return this.http.delete(this.API_URL + id)
+                    .map(this.extractData)
+                    .catch(this.errorService.handleError);
+  }
+
   private extractData(res: Response): any {
     let data;
     if (res.ok) {

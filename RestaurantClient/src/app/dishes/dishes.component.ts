@@ -32,7 +32,7 @@ export class DishesComponent implements OnInit {
     console.log('TODO: edit');
   }
 
-  private delete() {
-    console.log('TODO: delete');
+  private onDishDeleted() {
+    this.getDishes();
   }
 }
