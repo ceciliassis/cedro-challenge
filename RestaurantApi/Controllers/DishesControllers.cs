@@ -21,6 +21,7 @@ namespace RestaurantApi.Controllers
             _context = context;
         }
 
+        // GET api/dishes
         [HttpGet]
         public async Task<IActionResult> GetAll() {
             var dishes = await _context.Dishes
@@ -38,7 +39,8 @@ namespace RestaurantApi.Controllers
                                    .ToListAsync();
             return Ok(dishes);
         }
-        
+
+        // POST api/dishes
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] Dish dish) {
             if(dish == null) {
@@ -54,6 +56,7 @@ namespace RestaurantApi.Controllers
             }
         }
 
+        // PATCH api/dishes/{id}
         [HttpPatch("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] Dish dish) {
             if(dish == null || dish.DishID != id) {
@@ -83,6 +86,7 @@ namespace RestaurantApi.Controllers
             }
         }
 
+        // DELETE api/dishes/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id) {
             var dish = await _context.Dishes
