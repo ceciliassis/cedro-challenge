@@ -30,9 +30,9 @@ namespace RestaurantApi.Controllers
                                         (d, r) => new {dish = d, rest = r}
                                    ).Select(selectResult => new {
                                         dishID = selectResult.dish.DishID, 
-                                        dishName = selectResult.dish.Name, 
-                                        dishPrice = selectResult.dish.Price,
-                                        restID = selectResult.rest.RestaurantID,
+                                        name = selectResult.dish.Name, 
+                                        price = selectResult.dish.Price,
+                                        restaurantID = selectResult.rest.RestaurantID,
                                         restName = selectResult.rest.Name }
                                    ).ToListAsync();
             return Ok(dishes);
@@ -50,6 +50,35 @@ namespace RestaurantApi.Controllers
             } catch (DbUpdateException /* ex */) {
                 Response.StatusCode = (int) HttpStatusCode.InternalServerError;
                 return Json(new { error = "Ocorreu um erro interno, por favor tente novamente."});
+            }
+        }
+
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody] Dish dish) {
+            if(dish == null || dish.DishID != id) {
+                return BadRequest();
+            }
+
+            var dishToUpdate = await _context.Dishes
+                                             .SingleOrDefaultAsync(
+                                                 d => d.DishID == id
+                                             );
+
+            if(dishToUpdate == null){
+              return NotFound();
+            }
+
+            dishToUpdate.Name         = dish.Name;
+            dishToUpdate.RestaurantID = dish.RestaurantID;
+            dishToUpdate.Price        = dish.Price;
+
+            try {
+                _context.Dishes.Update(dishToUpdate);
+                await _context.SaveChangesAsync();
+                return Ok();
+            }catch(DbUpdateException /* ex */){
+                Response.StatusCode = (int) HttpStatusCode.InternalServerError;
+                return Json(new { error = "Ocorreu um erro interno, por favor tente novamente." });
             }
         }
 
